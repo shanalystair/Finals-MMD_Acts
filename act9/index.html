@@ -22,6 +22,11 @@
 
     .stats { display: flex; justify-content: space-around; margin-bottom: 20px; font-weight: bold; }
     .stat-item { text-align: center; }
+
+    /* Style for the inline edit input */
+    .edit-input { width: 60px; padding: 4px; }
+    .editable-qty { cursor: pointer; color: #2980b9; font-weight: bold; }
+    .editable-qty:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -70,7 +75,6 @@
 
     inventory.push({ name, qty });
     
-    // Clear inputs
     nameInput.value = "";
     qtyInput.value = "";
     
@@ -79,6 +83,37 @@
 
   function deleteItem(index) {
     inventory.splice(index, 1);
+    render();
+  }
+
+  // New function to handle the double-click transformation
+  function editQty(index, cell) {
+    const currentQty = inventory[index].qty;
+    
+    // Replace cell content with an input
+    cell.innerHTML = `<input type="number" class="edit-input" id="edit-input-${index}" value="${currentQty}">`;
+    
+    const input = document.getElementById(`edit-input-${index}`);
+    input.focus();
+
+    // Save on Enter key
+    input.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        saveQty(index, input.value);
+      }
+    });
+
+    // Save on clicking away
+    input.addEventListener('blur', () => {
+      saveQty(index, input.value);
+    });
+  }
+
+  function saveQty(index, newValue) {
+    const parsedValue = parseInt(newValue);
+    if (!isNaN(parsedValue) && parsedValue >= 0) {
+      inventory[index].qty = parsedValue;
+    }
     render();
   }
 
@@ -92,13 +127,14 @@
 
     inventory.forEach((item, index) => {
       sumQty += item.qty;
-      tbody.innerHTML += `
-        <tr>
-          <td>${item.name}</td>
-          <td>${item.qty}</td>
-          <td><button class="btn-del" onclick="deleteItem(${index})">Remove</button></td>
-        </tr>
+      
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td class="editable-qty" ondblclick="editQty(${index}, this)">${item.qty}</td>
+        <td><button class="btn-del" onclick="deleteItem(${index})">Remove</button></td>
       `;
+      tbody.appendChild(row);
     });
 
     totalItems.textContent = inventory.length;

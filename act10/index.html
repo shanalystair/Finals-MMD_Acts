@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Citrus – Where Every Sip Has a Purr-sonality</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --lemon:   #F5E642;
+      --lemon-d: #C9BC00;
+      --lime:    #7DC63B;
+      --lime-d:  #3E7A12;
+      --orange:  #F47B20;
+      --orange-d:#B85500;
+      --cream:   #FFFDE8;
+      --dark:    #1C1A05;
+      --muted:   #706840;
+      --white:   #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+```
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 5vw; height: 68px;
+  background: var(--dark);
+  border-bottom: 3px solid var(--lemon);
+}
+.nav-logo {
+  font-family: 'Abril Fatface', serif;
+  font-size: 1.9rem; color: var(--lemon); text-decoration: none;
+  letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;
+}
+.nav-logo img { height: 42px; width: auto; }
+.nav-links { display: flex; gap: 0; list-style: none; align-items: center; height: 100%; }
+.nav-links li { height: 100%; display: flex; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: rgba(255,255,255,0.75); font-size: 0.78rem;
+  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0 20px; height: 100%; display: flex; align-items: center;
+  border-bottom: 3px solid transparent; margin-bottom: -3px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-links a:hover { color: var(--lemon); border-color: var(--lemon); }
+.nav-links a.active { color: var(--lemon); border-color: var(--lemon); }
+.nav-cta {
+  background: var(--orange) !important; color: var(--white) !important;
+  border-radius: 50px; padding: 0 22px !important; height: 38px !important;
+  margin-left: 16px; border-bottom: none !important; margin-bottom: 0 !important;
+  font-weight: 700 !important; transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--orange-d) !important; transform: translateY(-1px); border-color: transparent !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; padding: 120px 8vw 80px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  position: relative; overflow: hidden;
+  background: var(--dark);
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(245,230,66,0.08) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 50% at 20% 80%, rgba(125,198,59,0.07) 0%, transparent 60%);
+}
+/* citrus slice pattern */
+.hero-pattern {
+  position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(244,123,32,0.12) 30%, transparent 31%),
+    radial-gradient(circle at 50% 50%, rgba(244,123,32,0.06) 45%, transparent 46%),
+    radial-gradient(circle at 50% 50%, rgba(244,123,32,0.04) 60%, transparent 61%);
+  opacity: 0.5;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,230,66,0.12); border: 1px solid rgba(245,230,66,0.3);
+  padding: 6px 16px; border-radius: 50px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--lemon); margin-bottom: 28px;
+}
+.hero-eyebrow span { width: 6px; height: 6px; background: var(--lime); border-radius: 50%; display: inline-block; }
+.hero h1 {
+  font-family: 'Abril Fatface', serif;
+  font-size: clamp(3rem, 5.5vw, 5.2rem); line-height: 1.05;
+  color: var(--white); margin-bottom: 28px;
+}
+.hero h1 .hl-lemon { color: var(--lemon); }
+.hero h1 .hl-lime  { color: var(--lime); }
+.hero h1 .hl-orange{ color: var(--orange); }
+.hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 44px; max-width: 440px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--orange); color: var(--white);
+  padding: 15px 34px; border-radius: 50px; font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(244,123,32,0.4); }
+.btn-outline-light {
+  border: 2px solid rgba(255,255,255,0.3); color: var(--white);
+  padding: 13px 34px; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+  text-decoration: none; transition: all 0.2s; display: inline-block;
+}
+.btn-outline-light:hover { border-color: var(--lemon); color: var(--lemon); }
+.hero-visual {
+  position: relative; z-index: 2; display: flex; align-items: center; justify-content: center;
+}
+.hero-fruit-stack {
+  position: relative; width: 380px; height: 380px;
+}
+.fruit-ring {
+  position: absolute; border-radius: 50%;
+  animation: spin-slow 20s linear infinite;
+}
+.fruit-ring.r1 {
+  inset: 0; border: 2px dashed rgba(245,230,66,0.25);
+}
+.fruit-ring.r2 {
+  inset: 30px; border: 2px dashed rgba(125,198,59,0.2);
+  animation-direction: reverse; animation-duration: 15s;
+}
+.fruit-ring.r3 {
+  inset: 60px; border: 2px dashed rgba(244,123,32,0.2);
+  animation-duration: 25s;
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.fruit-center {
+  position: absolute; inset: 80px;
+  background: radial-gradient(circle at 40% 35%, rgba(245,230,66,0.4), var(--orange) 60%, var(--orange-d));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem;
+  box-shadow: 0 20px 60px rgba(244,123,32,0.4), inset 0 -10px 30px rgba(0,0,0,0.2);
+  animation: float 5s ease-in-out infinite;
+}
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-12px) rotate(4deg); } }
+.fruit-orbit {
+  position: absolute; font-size: 1.8rem;
+  animation: orbit 10s linear infinite;
+  transform-origin: 190px 190px;
+}
+.fruit-orbit:nth-child(2) { animation-delay: -3.3s; }
+.fruit-orbit:nth-child(3) { animation-delay: -6.6s; }
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(170px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(170px) rotate(-360deg); }
+}
+
+/* ── MARQUEE STRIP ── */
+.marquee-strip {
+  background: var(--lemon); color: var(--dark); overflow: hidden;
+  padding: 14px 0; border-top: 2px solid var(--lemon-d); border-bottom: 2px solid var(--lemon-d);
+}
+.marquee-track {
+  display: flex; gap: 60px; white-space: nowrap;
+  animation: marquee 22s linear infinite;
+}
+.marquee-track span { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+.marquee-dot { color: var(--orange); font-size: 1.2rem; line-height: 1; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTIONS COMMONS ── */
+section { padding: 100px 8vw; }
+.sec-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 10px;
+}
+.sec-title {
+  font-family: 'Abril Fatface', serif;
+  font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: var(--dark); margin-bottom: 16px;
+}
+.sec-title em { font-style: italic; font-family: 'Cormorant Garamond', serif; color: var(--lime-d); font-size: 1.15em; }
+
+/* ── WHY US ── */
+.why-us { background: var(--dark); }
+.why-us .sec-label { color: var(--lemon); }
+.why-us .sec-title { color: var(--white); }
+.why-us .sec-title em { color: var(--lime); }
+.why-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  margin-top: 60px; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; overflow: hidden;
+}
+.why-card {
+  background: rgba(255,255,255,0.03); padding: 48px 36px;
+  border: 1px solid rgba(255,255,255,0.05);
+  position: relative; overflow: hidden; transition: background 0.3s;
+}
+.why-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+}
+.why-card:nth-child(1)::after,.why-card:nth-child(4)::after { background: var(--lemon); }
+.why-card:nth-child(2)::after,.why-card:nth-child(5)::after { background: var(--lime); }
+.why-card:nth-child(3)::after,.why-card:nth-child(6)::after { background: var(--orange); }
+.why-card:hover { background: rgba(255,255,255,0.06); }
+.why-card:hover::after { transform: scaleX(1); }
+.why-icon { font-size: 2.2rem; margin-bottom: 18px; display: block; }
+.why-card h3 { font-family: 'Abril Fatface', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 10px; }
+.why-card p { font-size: 0.88rem; line-height: 1.72; color: rgba(255,255,255,0.5); }
+
+/* ── BESTSELLERS ── */
+.bestsellers { background: var(--cream); }
+.best-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
+.best-link { color: var(--orange); text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid var(--orange); transition: color 0.2s; }
+.best-link:hover { color: var(--orange-d); }
+.best-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.best-card {
+  background: white; border-radius: 20px; overflow: hidden;
+  border: 2px solid transparent; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(28,26,5,0.06);
+}
+.best-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(28,26,5,0.12); }
+.best-card:nth-child(1):hover { border-color: var(--orange); }
+.best-card:nth-child(2):hover { border-color: var(--lime); }
+.best-card:nth-child(3):hover { border-color: var(--lemon-d); }
+.best-thumb {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  font-size: 5rem; position: relative; overflow: hidden;
+}
+.best-thumb.orange { background: linear-gradient(135deg, #FFF0D0, #FFD085); }
+.best-thumb.green  { background: linear-gradient(135deg, #E8F5D0, #B8E070); }
+.best-thumb.yellow { background: linear-gradient(135deg, #FFFAC0, #F0DE40); }
+.best-badge {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--dark); color: var(--lemon);
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 50px;
+}
+.best-info { padding: 24px; }
+.best-info h3 { font-family: 'Abril Fatface', serif; font-size: 1.1rem; color: var(--dark); margin-bottom: 8px; }
+.best-info p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+.best-price { font-size: 1.3rem; font-weight: 700; color: var(--orange); font-family: 'Cormorant Garamond', serif; }
+
+/* ── HISTORY ── */
+.history {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  background: linear-gradient(135deg, var(--lime-d) 0%, #2A6010 100%);
+}
+.history-visual { position: relative; }
+.history-box {
+  border-radius: 20px; display: flex; align-items: center; justify-content: center;
+  font-size: 8rem; height: 340px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  position: relative; overflow: hidden;
+}
+.history-box::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(245,230,66,0.2), transparent 60%);
+}
+.history-accent {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--lemon); color: var(--dark); border-radius: 16px;
+  padding: 20px 28px; text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.big-year { font-family: 'Abril Fatface', serif; font-size: 2.4rem; line-height: 1; }
+.history-accent small { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.history-text .sec-label { color: var(--lemon); }
+.history-text .sec-title { color: var(--white); }
+.history-text .sec-title em { color: var(--lemon); }
+.history-text p { color: rgba(255,255,255,0.7); line-height: 1.75; font-size: 0.95rem; margin-bottom: 1.2rem; }
+.btn-lemon {
+  background: var(--lemon); color: var(--dark); padding: 14px 32px; border-radius: 50px;
+  font-weight: 700; font-size: 0.9rem; text-decoration: none; display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s; margin-top: 8px;
+}
+.btn-lemon:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(245,230,66,0.4); }
+
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--cream); }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 50px; }
+.testi-card {
+  background: white; border-radius: 20px; padding: 36px;
+  border: 1px solid rgba(28,26,5,0.08);
+  box-shadow: 0 4px 20px rgba(28,26,5,0.04);
+  position: relative; transition: transform 0.3s;
+}
+.testi-card:hover { transform: translateY(-4px); }
+.testi-card::before {
+  content: '"'; position: absolute; top: 16px; left: 28px;
+  font-family: 'Abril Fatface', serif; font-size: 5rem; line-height: 1;
+  opacity: 0.08; color: var(--orange);
+}
+.stars { color: var(--orange); font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
+.testi-card blockquote { font-size: 0.92rem; line-height: 1.72; color: var(--muted); margin-bottom: 24px; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--lemon), var(--orange)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.testi-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+.testi-sub  { font-size: 0.78rem; color: var(--muted); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); color: rgba(255,255,255,0.5);
+  padding: 60px 8vw 30px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+  padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .f-logo { font-family: 'Abril Fatface', serif; font-size: 2rem; color: var(--lemon); text-decoration: none; display: block; margin-bottom: 14px; }
+.footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
+.footer-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 18px; }
+.footer-col a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.88rem; margin-bottom: 10px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--lemon); }
+.footer-col p { font-size: 0.88rem; line-height: 1.7; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; font-size: 0.82rem; }
+.footer-bottom-links { display: flex; gap: 28px; }
+.footer-bottom-links a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-bottom-links a:hover { color: var(--lemon); }
+
+/* ── ANIMATIONS ── */
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 110px 24px 60px; }
+  .hero-visual { display: none; }
+  section { padding: 70px 24px; }
+  .why-grid, .best-grid, .testi-grid, .footer-top { grid-template-columns: 1fr; }
+  .history { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+}
+
+/* ── SUIKA GAME SECTION ── */
+.suika-section {
+  background: var(--dark);
+  padding: 80px 8vw;
+  text-align: center;
+}
+.suika-section .sec-label { color: var(--lemon); }
+.suika-section .sec-title { color: var(--white); margin-bottom: 8px; }
+.suika-section .sec-title em { color: var(--orange); }
+.suika-intro {
+  color: rgba(255,255,255,0.5); font-size: 0.9rem;
+  margin-bottom: 36px; max-width: 420px; margin-left: auto; margin-right: auto;
+}
+.suika-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.suika-game-container {
+  position: relative;
+  display: inline-block;
+}
+#suika-canvas {
+  display: block;
+  border-radius: 0 0 16px 16px;
+  border: 2px solid rgba(245,230,66,0.3);
+  border-top: none;
+  cursor: crosshair;
+  background: #0e0d02;
+}
+.suika-top-bar {
+  background: rgba(245,230,66,0.1);
+  border: 2px solid rgba(245,230,66,0.3);
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 340px;
+}
+.suika-score-block { text-align: left; }
+.suika-score-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+}
+.suika-score-value {
+  font-family: 'Abril Fatface', serif;
+  font-size: 1.8rem; color: var(--lemon); line-height: 1;
+}
+.suika-next-block { text-align: right; }
+.suika-next-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+}
+#suika-next-preview {
+  font-size: 2rem; line-height: 1;
+}
+.suika-drop-indicator {
+  position: absolute;
+  top: 56px; /* below top bar */
+  width: 2px;
+  background: rgba(245,230,66,0.35);
+  pointer-events: none;
+  transition: left 0.05s;
+  border-radius: 1px;
+}
+.suika-side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  padding-top: 0;
+  min-width: 160px;
+}
+.suika-legend {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 18px;
+  width: 100%;
+}
+.suika-legend-title {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  margin-bottom: 12px;
+}
+.suika-legend-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.55);
+  margin-bottom: 6px;
+}
+.suika-legend-item span:first-child { font-size: 1.1rem; }
+.suika-legend-pts {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--lemon);
+  font-weight: 600;
+}
+.suika-btn {
+  background: var(--orange);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 11px 26px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  width: 100%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.suika-btn:hover { background: var(--orange-d); transform: translateY(-2px); }
+.suika-gameover-overlay {
+  position: absolute;
+  inset: 0;
+  top: 56px;
+  background: rgba(14,13,2,0.88);
+  border-radius: 0 0 14px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  z-index: 10;
+  display: none;
+}
+.suika-gameover-title {
+  font-family: 'Abril Fatface', serif;
+  font-size: 2rem;
+  color: var(--orange);
+}
+.suika-gameover-score {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+}
+.suika-gameover-score strong {
+  color: var(--lemon);
+  font-size: 1.6rem;
+  font-family: 'Abril Fatface', serif;
+  display: block;
+  margin-top: 2px;
+}
+.suika-instructions {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 18px;
+  width: 100%;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.65;
+  text-align: left;
+}
+.suika-instructions strong {
+  color: rgba(255,255,255,0.65);
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+```
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href=" " class="nav-logo">
+    <img src="https://images.vexels.com/media/users/3/238156/isolated/lists/abbb12b5be158e3ab8538c1c4a030286-retro-cartoon-scared-lemon-stroke-character.png" 
+    alt="Citrus Logo" style="height: 50px; width: auto;">
+  </a>
+  <ul class="nav-links">
+    <li><a href=" " class="active">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">Our Story</a></li>
+    <li><a href="book.html">Book Table</a></li>
+    <li><a href="#game">🍋 Mini Game</a></li>
+    <li><a href="order.html" class="nav-cta">Order Online</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span></span> Est. 2024 · Imus, Cavite</div>
+    <h1>Drinks as <span class="hl-lemon">bright</span> as your <span class="hl-lime">morning</span>.</h1>
+    <p class="hero-desc">Every sip is squeezed with purpose. Real fruit. Real flavour. No shortcuts, no syrups — just pure, vibrant citrus energy in a cup.</p>
+    <div class="hero-actions">
+      <a href="menu.html" class="btn-primary">Explore the Menu →</a>
+      <a href="about.html" class="btn-outline-light">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-fruit-stack">
+      <div class="fruit-ring r1"></div>
+      <div class="fruit-ring r2"></div>
+      <div class="fruit-ring r3"></div>
+      <div class="fruit-center">🍊</div>
+      <div class="fruit-orbit">🍋</div>
+      <div class="fruit-orbit">🍈</div>
+      <div class="fruit-orbit">🟡</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Fresh Squeezed Daily</span><span class="marquee-dot">◆</span>
+    <span>Real Citrus. No Syrups.</span><span class="marquee-dot">◆</span>
+    <span>Lemon · Lime · Orange</span><span class="marquee-dot">◆</span>
+    <span>Locally Sourced Ingredients</span><span class="marquee-dot">◆</span>
+    <span>Open Daily 10AM–10PM</span><span class="marquee-dot">◆</span>
+    <span>Fresh Squeezed Daily</span><span class="marquee-dot">◆</span>
+    <span>Real Citrus. No Syrups.</span><span class="marquee-dot">◆</span>
+    <span>Lemon · Lime · Orange</span><span class="marquee-dot">◆</span>
+    <span>Locally Sourced Ingredients</span><span class="marquee-dot">◆</span>
+    <span>Open Daily 10AM–10PM</span><span class="marquee-dot">◆</span>
+  </div>
+</div>
+
+<!-- WHY US -->
+
+<section class="why-us" id="why">
+  <p class="sec-label">Why Citrus?</p>
+  <h2 class="sec-title">We didn't open a café.<br><em>We built a feeling.</em></h2>
+  <div class="why-grid">
+    <div class="why-card fade-up">
+      <h3>Squeezed Fresh, Always</h3>
+      <p>No syrups. No shortcuts. Every drink starts with real fruit, pressed on the spot — because you can taste the difference.</p>
+    </div>
+    <div class="why-card fade-up" style="transition-delay:.1s">
+      <h3>A Name With a Story</h3>
+      <p>Citrus was named after a cat. That's not a gimmick — it's how we do everything: with personality, warmth, and zero apologies.</p>
+    </div>
+    <div class="why-card fade-up" style="transition-delay:.2s">
+      <h3>Crafted for the Crave</h3>
+      <p>Our recipes are obsessed over, not guessed. We tweak until the balance of sour, sweet, and refreshing is exactly right.</p>
+    </div>
+    <div class="why-card fade-up" style="transition-delay:.3s">
+      <h3>Locally Sourced</h3>
+      <p>We buy from local farms whenever we can. Fresher ingredients, stronger community, smaller footprint. Everybody wins.</p>
+    </div>
+    <div class="why-card fade-up" style="transition-delay:.4s">
+      <h3>Fair Prices, No Guilt</h3>
+      <p>Great drinks shouldn't feel like a splurge. Our menu is priced so you can come back tomorrow — and the day after that.</p>
+    </div>
+    <div class="why-card fade-up" style="transition-delay:.5s">
+      <h3>Made With Real Care</h3>
+      <p>Every order matters to us. Whether it's your first time or your hundredth, you'll always leave feeling remembered.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+
+<section class="bestsellers" id="bestsellers">
+  <div class="best-header">
+    <div>
+      <p class="sec-label">Customer Favorites</p>
+      <h2 class="sec-title">The sips everyone <em>comes back</em> for.</h2>
+    </div>
+    <a href="menu.html" class="best-link">View full menu →</a>
+  </div>
+  <div class="best-grid">
+    <div class="best-card fade-up">
+      <div class="best-thumb orange">
+        🍋<span class="best-badge">#1 Bestseller</span>
+      </div>
+      <div class="best-info">
+        <h3>Citrus Classic Lemonade</h3>
+        <p>Cold-pressed lemon juice, light honey syrup, and a salt rim that makes the whole thing pop.</p>
+        <div class="best-price">₱55</div>
+      </div>
+    </div>
+    <div class="best-card fade-up" style="transition-delay:.1s">
+      <div class="best-thumb green">
+        🥝<span class="best-badge">Staff Pick</span>
+      </div>
+      <div class="best-info">
+        <h3>Calamansi with Honey</h3>
+        <p>Fresh calamansi pressed daily and stirred with raw wildflower honey.</p>
+        <div class="best-price">₱75</div>
+      </div>
+    </div>
+    <div class="best-card fade-up" style="transition-delay:.2s">
+      <div class="best-thumb yellow">
+        🍊<span class="best-badge">New</span>
+      </div>
+      <div class="best-info">
+        <h3>Bundaberg Lemon Lime & Bitters</h3>
+        <p>Slow-brewed over weeks using real ginger and Australian botanicals.</p>
+        <div class="best-price">₱120</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUIKA CITRUS GAME -->
+
+<section class="suika-section" id="game">
+  <p class="sec-label">Mini Game</p>
+  <h2 class="sec-title">Citrus <em>Drop</em> Game</h2>
+  <p class="suika-intro">Drop & merge citrus fruits — same fruits combine into something bigger. How high can you score?</p>
+
+  <div class="suika-wrapper">
+    <div class="suika-game-container">
+      <div class="suika-top-bar" style="width:340px">
+        <div class="suika-score-block">
+          <div class="suika-score-label">Score</div>
+          <div class="suika-score-value" id="suika-score">0</div>
+        </div>
+        <div class="suika-next-block">
+          <div class="suika-next-label">Next</div>
+          <div id="suika-next-preview">🍋</div>
+        </div>
+      </div>
+      <canvas id="suika-canvas" width="340" height="480"></canvas>
+      <div class="suika-drop-indicator" id="suika-indicator" style="height:480px; left:170px;"></div>
+      <div class="suika-gameover-overlay" id="suika-gameover">
+        <div class="suika-gameover-title">Game Over! 🍊</div>
+        <div class="suika-gameover-score">
+          Final Score
+          <strong id="suika-final-score">0</strong>
+        </div>
+        <button class="suika-btn" onclick="suikaRestart()" style="width:160px">Play Again</button>
+      </div>
+    </div>
+
+```
+<div class="suika-side-panel">
+  <div class="suika-legend">
+    <div class="suika-legend-title">Fruits</div>
+    <div class="suika-legend-item"><span>🍋</span> Lemon <span class="suika-legend-pts">1pt</span></div>
+    <div class="suika-legend-item"><span>🍊</span> Orange <span class="suika-legend-pts">3pts</span></div>
+    <div class="suika-legend-item"><span>🍈</span> Grapefruit <span class="suika-legend-pts">6pts</span></div>
+    <div class="suika-legend-item"><span>🟡</span> Yuzu <span class="suika-legend-pts">10pts</span></div>
+    <div class="suika-legend-item"><span>🍋‍🟩</span> Lime <span class="suika-legend-pts">15pts</span></div>
+    <div class="suika-legend-item"><span>🌕</span> Pomelo <span class="suika-legend-pts">21pts</span></div>
+  </div>
+  <div class="suika-instructions">
+    <strong>How to play</strong>
+    Click or tap to drop a fruit.<br>
+    Same fruits merge into bigger ones.<br>
+    Don't let fruits overflow the top!
+  </div>
+  <button class="suika-btn" onclick="suikaRestart()">Restart</button>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- HISTORY -->
+
+<section class="history" id="story">
+  <div class="history-visual fade-up">
+    <div class="history-box">🐱</div>
+    <div class="history-accent">
+      <div class="big-year">2024</div>
+      <small>Founded with love</small>
+    </div>
+  </div>
+  <div class="history-text fade-up" style="transition-delay:.15s">
+    <p class="sec-label">Our Story</p>
+    <h2 class="sec-title">It started with a cat named <em>Citrus.</em></h2>
+    <p>It wasn't a business plan — it was a nickname. A small, citrus-orange tabby cat who always looked like she had somewhere important to be.</p>
+    <p>In 2024, Citrus quietly opened its doors. No grand launch. No investors. Just a blender, a lot of lemons, and a belief that if you make something with genuine love, people will find it.</p>
+    <p>Today, Citrus is a neighborhood spot where students study, couples share cold drinks, and regulars become friends.</p>
+    <a href="about.html" class="btn-lemon">Read Our Full Story →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials">
+  <p class="sec-label">What People Say</p>
+  <h2 class="sec-title">Guests don't just visit. <em>They return.</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The Citrus Lemonade is something else. I've had lemonade everywhere and nothing comes close. The salt rim is genius."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar">🧑</div>
+        <div><div class="testi-name">Marco R.</div><div class="testi-sub">Regular since Day 1</div></div>
+      </div>
+    </div>
+    <div class="testi-card fade-up" style="transition-delay:.1s">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Finally a place that feels like it actually cares. The vibe, the drinks, the cat name — everything makes sense together."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar">👩</div>
+        <div><div class="testi-name">Ana L.</div><div class="testi-sub">Food Blogger · Cavite</div></div>
+      </div>
+    </div>
+    <div class="testi-card fade-up" style="transition-delay:.2s">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I came for the Kiwi Slush and stayed because the place felt like home. Prices are shockingly reasonable too."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar">🧒</div>
+        <div><div class="testi-name">Jessa M.</div><div class="testi-sub">College Student</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="f-logo">Citrus.</a>
+      <p>Where every sip is squeezed with purpose. Real fruit, real care, no shortcuts.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">Our Story</a>
+      <a href="book.html">Book Table</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Imus, Cavite</p>
+      <p>+63 912 345 6789</p>
+      <p>citrus@email.com</p>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>Open Daily</p>
+      <p>10:00 AM – 10:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Citrus Café · Imus, Cavite · All Rights Reserved</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
+<script>
+// ─── SUIKA CITRUS DROP GAME ───────────────────────────────────────────────────
+(function() {
+  const FRUITS = [
+    { name: 'lemon',      emoji: '🍋',    r: 18, points: 1,  color: '#F5E642' },
+    { name: 'orange',     emoji: '🍊',    r: 26, points: 3,  color: '#F47B20' },
+    { name: 'grapefruit', emoji: '🍈',    r: 34, points: 6,  color: '#E8A87C' },
+    { name: 'yuzu',       emoji: '🟡',    r: 42, points: 10, color: '#F0DE40' },
+    { name: 'lime',       emoji: '🍋‍🟩',  r: 50, points: 15, color: '#7DC63B' },
+    { name: 'pomelo',     emoji: '🌕',    r: 60, points: 21, color: '#F5E642' },
+  ];
+
+  const W = 340, H = 480;
+  const WALL_T = 20;
+  const DROP_Y = 40;
+  const DANGER_Y = 60;
+
+  let engine, world, render, runner;
+  let bodies = [];
+  let score = 0;
+  let nextFruitIdx = 0;
+  let curFruitIdx = 0;
+  let dropX = W / 2;
+  let canDrop = true;
+  let gameOver = false;
+  let mergeQueue = [];
+  let frameCount = 0;
+  let gameStarted = false;
+
+  const canvas    = document.getElementById('suika-canvas');
+  const scoreEl   = document.getElementById('suika-score');
+  const nextEl    = document.getElementById('suika-next-preview');
+  const indicator = document.getElementById('suika-indicator');
+  const overlay   = document.getElementById('suika-gameover');
+  const finalEl   = document.getElementById('suika-final-score');
+  const ctx       = canvas.getContext('2d');
+
+  function randFruitIdx() {
+    // Only spawn small-ish fruits (first 3)
+    return Math.floor(Math.random() * 3);
+  }
+
+  function init() {
+    score = 0;
+    bodies = [];
+    mergeQueue = [];
+    gameOver = false;
+    canDrop = true;
+    gameStarted = false;
+    frameCount = 0;
+    dropX = W / 2;
+    curFruitIdx = randFruitIdx();
+    nextFruitIdx = randFruitIdx();
+    scoreEl.textContent = '0';
+    nextEl.textContent = FRUITS[nextFruitIdx].emoji;
+    overlay.style.display = 'none';
+    updateIndicator();
+
+    if (engine) {
+      Matter.Runner.stop(runner);
+      Matter.World.clear(world);
+      Matter.Engine.clear(engine);
+    }
+
+    engine = Matter.Engine.create({ gravity: { y: 2 } });
+    world  = engine.world;
+    runner = Matter.Runner.create();
+
+    // Walls: left, right, floor
+    const wallOpts = { isStatic: true, friction: 0.3, restitution: 0.2, label: 'wall' };
+    Matter.World.add(world, [
+      Matter.Bodies.rectangle(-WALL_T/2, H/2, WALL_T, H+100, wallOpts),       // left
+      Matter.Bodies.rectangle(W + WALL_T/2, H/2, WALL_T, H+100, wallOpts),    // right
+      Matter.Bodies.rectangle(W/2, H + WALL_T/2, W+100, WALL_T, wallOpts),    // floor
+    ]);
+
+    // Collision merging
+    Matter.Events.on(engine, 'collisionStart', function(event) {
+      event.pairs.forEach(pair => {
+        const a = pair.bodyA, b = pair.bodyB;
+        if (a.label === 'wall' || b.label === 'wall') return;
+        if (a.fruitIdx === b.fruitIdx && a.fruitIdx !== undefined) {
+          const key = [a.id, b.id].sort().join('-');
+          if (!mergeQueue.some(m => m.key === key)) {
+            mergeQueue.push({ key, a, b });
+          }
+        }
+      });
+    });
+
+    Matter.Runner.run(runner, engine);
+
+    // Custom render loop
+    requestAnimationFrame(gameLoop);
+  }
+
+  function spawnFruit(x, y, idx, isStatic) {
+    const f = FRUITS[idx];
+    const body = Matter.Bodies.circle(x, y, f.r, {
+      restitution: 0.25,
+      friction: 0.4,
+      frictionAir: 0.005,
+      density: 0.004,
+      label: 'fruit',
+      fruitIdx: idx,
+      isStatic: isStatic || false,
+    });
+    body.fruitIdx = idx;
+    Matter.World.add(world, body);
+    bodies.push(body);
+    return body;
+  }
+
+  function processMerges() {
+    const processed = new Set();
+    mergeQueue.forEach(({ key, a, b }) => {
+      if (processed.has(a.id) || processed.has(b.id)) return;
+      if (!bodies.includes(a) || !bodies.includes(b)) return;
+      const nextIdx = a.fruitIdx + 1;
+      const mx = (a.position.x + b.position.x) / 2;
+      const my = (a.position.y + b.position.y) / 2;
+      removeFruit(a);
+      removeFruit(b);
+      processed.add(a.id);
+      processed.add(b.id);
+      if (nextIdx < FRUITS.length) {
+        spawnFruit(mx, my, nextIdx, false);
+        score += FRUITS[nextIdx].points;
+        scoreEl.textContent = score;
+      } else {
+        // Max fruit — just add points
+        score += 30;
+        scoreEl.textContent = score;
+      }
+    });
+    mergeQueue = [];
+  }
+
+  function removeFruit(body) {
+    Matter.World.remove(world, body);
+    const i = bodies.indexOf(body);
+    if (i > -1) bodies.splice(i, 1);
+  }
+
+  function updateIndicator() {
+    const f = FRUITS[curFruitIdx];
+    indicator.style.left = (dropX - 1) + 'px';
+    indicator.style.height = (H - (f.r)) + 'px';
+    indicator.style.top = (56 + f.r) + 'px';
+  }
+
+  function drop() {
+    if (!canDrop || gameOver) return;
+    canDrop = false;
+    gameStarted = true;
+    spawnFruit(dropX, DROP_Y + FRUITS[curFruitIdx].r, curFruitIdx, false);
+    curFruitIdx = nextFruitIdx;
+    nextFruitIdx = randFruitIdx();
+    nextEl.textContent = FRUITS[nextFruitIdx].emoji;
+    updateIndicator();
+    setTimeout(() => { if (!gameOver) canDrop = true; }, 500);
+  }
+
+  function checkGameOver() {
+    if (!gameStarted) return;
+    for (const b of bodies) {
+      if (b.position.y - FRUITS[b.fruitIdx].r < DANGER_Y && Math.abs(b.velocity.y) < 0.5) {
+        frameCount++;
+        if (frameCount > 40) {
+          gameOver = true;
+          canDrop = false;
+          finalEl.textContent = score;
+          overlay.style.display = 'flex';
+          Matter.Runner.stop(runner);
+        }
+        return;
+      }
+    }
+    frameCount = 0;
+  }
+
+  function drawFruit(body) {
+    const f = FRUITS[body.fruitIdx];
+    const { x, y } = body.position;
+    const r = f.r;
+    const angle = body.angle;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+
+    // Shadow
+    ctx.shadowColor = 'rgba(0,0,0,0.3)';
+    ctx.shadowBlur = 8;
+
+    // Circle bg
+    ctx.beginPath();
+    ctx.arc(0, 0, r, 0, Math.PI * 2);
+    ctx.fillStyle = f.color + '55';
+    ctx.fill();
+
+    // Emoji
+    ctx.shadowBlur = 0;
+    ctx.font = `${Math.floor(r * 1.35)}px serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(f.emoji, 0, 1);
+
+    ctx.restore();
+  }
+
+  function drawDangerLine() {
+    ctx.save();
+    ctx.setLineDash([6, 5]);
+    ctx.strokeStyle = 'rgba(244,123,32,0.35)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(0, DANGER_Y);
+    ctx.lineTo(W, DANGER_Y);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawCurrentFruit() {
+    if (!canDrop || gameOver) return;
+    const f = FRUITS[curFruitIdx];
+    ctx.save();
+    ctx.globalAlpha = 0.7;
+    ctx.font = `${Math.floor(f.r * 1.35)}px serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(f.emoji, dropX, DROP_Y + f.r);
+    ctx.restore();
+  }
+
+  function gameLoop() {
+    if (gameOver) return;
+    processMerges();
+    checkGameOver();
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Background grid subtle
+    ctx.fillStyle = '#0e0d02';
+    ctx.fillRect(0, 0, W, H);
+
+    drawDangerLine();
+
+    // Draw fruits
+    bodies.forEach(b => {
+      if (b.label === 'fruit') drawFruit(b);
+    });
+
+    drawCurrentFruit();
+
+    requestAnimationFrame(gameLoop);
+  }
+
+  // ─── Input ────────────────────────────────────────────────────────────────
+  function getCanvasX(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    return Math.max(FRUITS[curFruitIdx].r + 2,
+           Math.min(W - FRUITS[curFruitIdx].r - 2,
+           clientX - rect.left));
+  }
+
+  canvas.addEventListener('mousemove', e => {
+    if (gameOver) return;
+    dropX = getCanvasX(e);
+    updateIndicator();
+  });
+
+  canvas.addEventListener('click', e => {
+    if (gameOver) return;
+    dropX = getCanvasX(e);
+    updateIndicator();
+    drop();
+  });
+
+  canvas.addEventListener('touchmove', e => {
+    e.preventDefault();
+    if (gameOver) return;
+    dropX = getCanvasX(e);
+    updateIndicator();
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', e => {
+    e.preventDefault();
+    if (gameOver) return;
+    drop();
+  }, { passive: false });
+
+  // ─── Expose restart ───────────────────────────────────────────────────────
+  window.suikaRestart = init;
+
+  // ─── Start ────────────────────────────────────────────────────────────────
+  init();
+})();
+</script>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

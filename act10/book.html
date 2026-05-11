@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Table — Citrus – Reservations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    /* Styling from original index.html, matching style */
+    :root {
+      --lemon:   #F5E642;
+      --lemon-d: #C9BC00;
+      --lime:    #7DC63B;
+      --lime-d:  #3E7A12;
+      --orange:  #F47B20;
+      --orange-d:#B85500;
+      --cream:   #FFFDE8;
+      --dark:    #1C1A05;
+      --muted:   #706840;
+      --white:   #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+        /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 5vw; height: 68px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--lemon);
+    }
+    .nav-logo {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.9rem; color: var(--lemon); text-decoration: none;
+      letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo img { height: 42px; width: auto; }
+    .nav-links { display: flex; gap: 0; list-style: none; align-items: center; height: 100%; }
+    .nav-links li { height: 100%; display: flex; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: rgba(255,255,255,0.75); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0 20px; height: 100%; display: flex; align-items: center;
+      border-bottom: 3px solid transparent; margin-bottom: -3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover { color: var(--lemon); border-color: var(--lemon); }
+    .nav-links a.active { color: var(--lemon); border-color: var(--lemon); }
+    .nav-cta {
+      background: var(--orange) !important; color: var(--white) !important;
+      border-radius: 50px; padding: 0 22px !important; height: 38px !important;
+      margin-left: 16px; border-bottom: none !important; margin-bottom: 0 !important;
+      font-weight: 700 !important; transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange-d) !important; transform: translateY(-1px); border-color: transparent !important; }
+
+
+    /* HEADER */
+    .page-header {
+      padding: 140px 60px 60px;
+      text-align: center;
+      background: linear-gradient(135deg, #FFF0D0, #FFD799);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 700; color: var(--dark);
+      margin-bottom: 1.2rem;
+    }
+    .page-header h1 em { color: var(--orange); font-style: italic; }
+    .page-header p { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+    /* BOOKING FORM */
+    .book-section { padding: 80px 60px; }
+    .book-container {
+      max-width: 800px; margin: 0 auto;
+      background: var(--white);
+      padding: 60px; border-radius: 20px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    }
+    .form-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--dark); margin-bottom: 2rem; }
+    .book-form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 30px; }
+    .form-group { grid-column: span 1; display: flex; flex-direction: column; }
+    .form-group.full { grid-column: span 2; }
+    .book-form label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .book-form input, .book-form select {
+      padding: 14px 16px; border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: 8px; font-size: 0.95rem; font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s; color: var(--dark); background: white;
+    }
+    .book-form input:focus, .book-form select:focus { outline: none; border-color: var(--lemon); }
+    .btn-submit {
+      grid-column: span 2; margin-top: 1rem;
+      background: var(--lemon); color: var(--white);
+      padding: 16px 36px; border-radius: 50px; font-weight: 600;
+      border: none; cursor: pointer; font-size: 1rem; transition: transform 0.2s;
+    }
+    .btn-submit:hover { transform: translateY(-3px); }
+
+     /* ── FOOTER ── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,0.5);
+      padding: 60px 8vw 30px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+      padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .f-logo { font-family: 'Abril Fatface', serif; font-size: 2rem; color: var(--lemon); text-decoration: none; display: block; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 18px; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.88rem; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--lemon); }
+    .footer-col p { font-size: 0.88rem; line-height: 1.7; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; font-size: 0.82rem; }
+    .footer-bottom-links { display: flex; gap: 28px; }
+    .footer-bottom-links a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--lemon); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://images.vexels.com/media/users/3/238156/isolated/lists/abbb12b5be158e3ab8538c1c4a030286-retro-cartoon-scared-lemon-stroke-character.png" 
+    alt="Citrus Logo" style="height: 50px; width: auto;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">Our Story</a></li>
+    <li><a href="#" class="active">Book Table</a></li>
+    <li><a href="order.html" class="nav-cta">Order Online</a></li>
+  </ul>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <h1>Reserve a <em>Spot</em></h1>
+  <p>Secure your favorite nook. Please fill out the form below to request a reservation. We'll get back to you shortly to confirm.</p>
+</header>
+
+<!-- BOOKING FORM -->
+<section class="book-section">
+  <div class="book-container">
+    <h2 class="form-title">Booking Details</h2>
+    <form class="book-form" id="reservationForm">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" placeholder="Your full name" required>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+63 XXX XXX XXXX" required>
+      </div>
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" required>
+      </div>
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" min="10:00" max="21:00" required>
+      </div>
+      <div class="form-group">
+        <label>Guests</label>
+        <select required>
+          <option value="">Select number of guests</option>
+          <option value="1">1 Person</option>
+          <option value="2">2 People</option>
+          <option value="3">3 People</option>
+          <option value="4">4 People</option>
+          <option value="5">5+ People (Contact us)</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Any Special Requests?</label>
+        <input type="text" placeholder="e.g., Cat allergy, birthday note...">
+      </div>
+      <button type="submit" class="btn-submit">Request Reservation</button>
+    </form>
+    <p id="formFeedback" style="display:none; text-align:center; color: var(--lemon); font-weight: 600; margin-top: 2rem; font-family: 'Playfair Display', serif; font-size: 1.3rem;"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="f-logo">Citrus.</a>
+      <p>Where every sip is squeezed with purpose. Real fruit, real care, no shortcuts.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">Our Story</a>
+      <a href="book.html">Book Table</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Imus, Cavite</p>
+      <p>+63 912 345 6789</p>
+      <p>citrus@email.com</p>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>Open Daily</p>
+      <p>10:00 AM – 10:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Citrus Restaurant — All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+    document.getElementById('reservationForm').addEventListener('submit', function(e) {
+        e.e.preventDefault();
+        this.this.style.display = 'none';
+        const feedback = document.getElementById('formFeedback');
+        feedback.feedback.textContent = '✓ Thank you! We have received your reservation request. Please check your email or SMS for a confirmation shortly.';
+        feedback.feedback.style.display = 'block';
+    });
+</script>
+
+</body>
+</html>

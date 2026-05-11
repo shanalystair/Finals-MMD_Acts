@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Story — Citrus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --lemon:   #F5E642;
+      --lemon-d: #C9BC00;
+      --lime:    #7DC63B;
+      --lime-d:  #3E7A12;
+      --orange:  #F47B20;
+      --orange-d:#B85500;
+      --cream:   #FFFDE8;
+      --dark:    #1C1A05;
+      --muted:   #706840;
+      --white:   #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+        /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 5vw; height: 68px;
+      background: var(--dark);
+      border-bottom: 3px solid var(--lemon);
+    }
+    .nav-logo {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.9rem; color: var(--lemon); text-decoration: none;
+      letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo img { height: 42px; width: auto; }
+    .nav-links { display: flex; gap: 0; list-style: none; align-items: center; height: 100%; }
+    .nav-links li { height: 100%; display: flex; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: rgba(255,255,255,0.75); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0 20px; height: 100%; display: flex; align-items: center;
+      border-bottom: 3px solid transparent; margin-bottom: -3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover { color: var(--lemon); border-color: var(--lemon); }
+    .nav-links a.active { color: var(--lemon); border-color: var(--lemon); }
+    .nav-cta {
+      background: var(--orange) !important; color: var(--white) !important;
+      border-radius: 50px; padding: 0 22px !important; height: 38px !important;
+      margin-left: 16px; border-bottom: none !important; margin-bottom: 0 !important;
+      font-weight: 700 !important; transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange-d) !important; transform: translateY(-1px); border-color: transparent !important; }
+
+
+    /* ─── HERO ─── */
+    .about-hero {
+      min-height: 80vh; background: var(--dark);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      padding-top: 70px; overflow: hidden;
+    }
+    .about-hero-left {
+      padding: 80px 8vw 80px 8vw;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+    }
+    .about-hero-left::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 60%, rgba(244,160,35,0.1), transparent 60%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--lemon); margin-bottom: 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--lemon); }
+    .about-hero-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem); font-weight: 700;
+      color: var(--white); line-height: 1.1; margin-bottom: 28px;
+    }
+    .about-hero-left h1 em { color: var(--lemon); font-style: italic; }
+    .about-hero-left p { color: rgba(255,255,255,0.57); font-size: 1rem; line-height: 1.8; margin-bottom: 36px; max-width: 480px; }
+    .btn-primary {
+      background: var(--lemon); color: var(--dark);
+      padding: 15px 36px; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(244,160,35,0.4);
+      align-self: flex-start;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(244,160,35,0.5); }
+    .about-hero-right {
+      background: linear-gradient(160deg, #2a1c08, #1A1208);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      border-left: 1px solid rgba(255,255,255,0.06);
+    }
+    .about-hero-right .big-citrus {
+      font-size: 14rem; opacity: 0.18; animation: slowSpin 20s linear infinite;
+    }
+    @keyframes slowSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    .about-hero-right .overlay-card {
+      position: absolute; background: rgba(244,160,35,0.1);
+      border: 1px solid rgba(244,160,35,0.25); border-radius: 20px;
+      padding: 24px 32px; text-align: center; backdrop-filter: blur(8px);
+    }
+    .overlay-card .card-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--orange); display: block; line-height: 1; }
+    .overlay-card .card-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+
+    /* ─── SECTION COMMONS ─── */
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-eyebrow::before { content: ''; width: 30px; height: 2px; background: var(--lemon); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3.2rem); line-height: 1.15; color: var(--dark); margin-bottom: 24px; font-weight: 700; }
+    .section-title em { color: var(--lemon); font-style: italic; }
+
+    /* ─── VALUES SECTION ─── */
+    .values-section { padding: 110px 8vw; background: var(--cream); }
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 60px; }
+    .value-card {
+      background: var(--white); border-radius: 20px; padding: 40px 34px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .value-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--lime));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+    }
+    .value-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+    .value-card:hover::before { transform: scaleX(1); }
+    .value-icon { font-size: 2.2rem; margin-bottom: 18px; display: block; }
+    .value-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+    .value-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+
+    /* ─── TIMELINE ─── */
+    .timeline-section { padding: 110px 8vw; background: var(--lime); }
+    .timeline-section .section-title { color: var(--white); }
+    .timeline { max-width: 780px; margin: 60px auto 0; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: rgba(244,160,35,0.2); }
+    .timeline-item { display: flex; gap: 40px; margin-bottom: 56px; position: relative; }
+    .timeline-dot {
+      width: 56px; height: 56px; background: var(--dark); border: 2px solid var(--lemon);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0; z-index: 1; position: relative;
+    }
+    .timeline-content { padding-top: 8px; }
+    .timeline-date { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+    .timeline-content h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 10px; }
+    .timeline-content p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
+
+    /* ─── TEAM QUOTE ─── */
+    .quote-section {
+      padding: 110px 8vw; background: var(--lemon); color: var(--white);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .quote-section::before {
+      content: '"'; font-family: 'Playfair Display', serif; font-size: 26rem;
+      color: rgba(0,0,0,0.06); position: absolute; top: -60px; left: 50%;
+      transform: translateX(-50%); line-height: 1; pointer-events: none;
+    }
+    .big-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700;
+      color: var(--dark); max-width: 800px; margin: 0 auto 28px;
+      line-height: 1.3; position: relative;
+    }
+    .quote-attr { font-size: 0.85rem; font-weight: 600; color: rgba(26,18,8,0.6); letter-spacing: 0.1em; text-transform: uppercase; position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,0.5);
+      padding: 60px 8vw 30px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+      padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .f-logo { font-family: 'Abril Fatface', serif; font-size: 2rem; color: var(--lemon); text-decoration: none; display: block; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 18px; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.88rem; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--lemon); }
+    .footer-col p { font-size: 0.88rem; line-height: 1.7; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; font-size: 0.82rem; }
+    .footer-bottom-links { display: flex; gap: 28px; }
+    .footer-bottom-links a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--lemon); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; } .nav-links { display: none; }
+      .about-hero { grid-template-columns: 1fr; }
+      .about-hero-right { height: 300px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://images.vexels.com/media/users/3/238156/isolated/lists/abbb12b5be158e3ab8538c1c4a030286-retro-cartoon-scared-lemon-stroke-character.png" 
+    alt="Citrus Logo" style="height: 50px; width: auto;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="#" class="active">Our Story</a></li>
+    <li><a href="book.html">Book Table</a></li>
+    <li><a href="order.html" class="nav-cta">Order Online</a></li>
+  </ul>
+</nav>
+
+
+<!-- HERO -->
+<div class="about-hero">
+  <div class="about-hero-left fade-up">
+    <p class="hero-eyebrow">Est. 2024</p>
+    <h1>We Are <em>Citrus</em></h1>
+    <p>In just one short year, Citrus grew from a simple vision into a premier destination for those who refuse to settle for the ordinary. We believe a drink is an art form — crafted with genuine care, a modern edge, and a commitment to pure ingredients.</p>
+    <a href="menu.html" class="btn-primary">Explore Our Menu →</a>
+  </div>
+  <div class="about-hero-right">
+    <div class="big-citrus">🍊</div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section class="values-section">
+  <p class="section-eyebrow">What We Believe</p>
+  <h2 class="section-title">Our values, squeezed into everything we do.</h2>
+  <div class="values-grid">
+    <div class="value-card fade-up">
+      <h3>Radical Freshness</h3>
+      <p>We press, we don't pour. Every fruit is cut that morning. Every cup is made in front of you. Freshness isn't a feature — it's the only way we know how to work.</p>
+    </div>
+    <div class="value-card fade-up" style="transition-delay:.1s">
+      <h3>Community First</h3>
+      <p>We source from local farms, hire from the neighborhood, and price our menu so everyone can walk in. Citrus belongs to the community that made it possible.</p>
+    </div>
+    <div class="value-card fade-up" style="transition-delay:.2s">
+      <h3>Personality Over Polish</h3>
+      <p>We're named after a cat. That tells you everything. We'd rather be genuine and a little weird than polished and forgettable. The cat gets a line on every menu.</p>
+    </div>
+    <div class="value-card fade-up" style="transition-delay:.3s">
+      <h3>Obsessive Craft</h3>
+      <p>We test recipes until the balance is exactly right. Not good enough — exactly right. That obsession is what separates a drink worth remembering from one you finish and forget.</p>
+    </div>
+    <div class="value-card fade-up" style="transition-delay:.4s">
+      <h3>Sustainable Heart</h3>
+      <p>Recyclable packaging, zero waste practices, and a menu that evolves with the season. We take care of the ingredients. The ingredients take care of you.</p>
+    </div>
+    <div class="value-card fade-up" style="transition-delay:.5s">
+      <h3>Warmth Without Pretension</h3>
+      <p>No reservation required to feel welcome here. Every customer — first-timer or hundredth-timer — gets the same warmth, the same care, the same smile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <p class="section-eyebrow" style="color:var(--lemon)">Our Journey</p>
+  <h2 class="section-title">From one cat to one <em>community.</em></h2>
+  <div class="timeline">
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot">🐱</div>
+      <div class="timeline-content">
+        <p class="timeline-date">Early 2024</p>
+        <h3>A Cat Named Citrus</h3>
+        <p>A small orange tabby cat inspires a name. Her owner starts experimenting with cold-pressed citrus drinks at home, sharing samples with neighbors. They keep asking for more.</p>
+      </div>
+    </div>
+    <div class="timeline-item fade-up" style="transition-delay:.1s">
+      <div class="timeline-dot">🍋</div>
+      <div class="timeline-content">
+        <p class="timeline-date">Mid 2024</p>
+        <h3>The First Recipe</h3>
+        <p>After 47 test batches, the Citrus Classic Lemonade is born — cold-pressed lemon, honey syrup, salt rim. The recipe that would define everything that followed.</p>
+      </div>
+    </div>
+    <div class="timeline-item fade-up" style="transition-delay:.2s">
+      <div class="timeline-dot">🏠</div>
+      <div class="timeline-content">
+        <p class="timeline-date">Late 2024</p>
+        <h3>Opening Day in Imus</h3>
+        <p>Citrus quietly opens its doors in Imus, Cavite. No grand launch, no investors — just a blender, a lot of lemons, and genuine belief. The neighborhood shows up. And keeps showing up.</p>
+      </div>
+    </div>
+    <div class="timeline-item fade-up" style="transition-delay:.3s">
+      <div class="timeline-dot">⭐</div>
+      <div class="timeline-content">
+        <p class="timeline-date">Today</p>
+        <h3>1,000+ Guests & Growing</h3>
+        <p>Over a thousand guests served, a full menu of citrus-inspired food and drink, and a community that has made this place their own. The cat still gets full credit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG QUOTE -->
+<section class="quote-section">
+  <p class="big-quote">"If you make something with genuine love, people will find it."</p>
+  <p class="quote-attr">— The Citrus Promise</p>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="f-logo">Citrus.</a>
+      <p>Where every sip is squeezed with purpose. Real fruit, real care, no shortcuts.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">Our Story</a>
+      <a href="book.html">Book Table</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Imus, Cavite</p>
+      <p>+63 912 345 6789</p>
+      <p>citrus@email.com</p>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>Open Daily</p>
+      <p>10:00 AM – 10:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Citrus Restaurant — All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
